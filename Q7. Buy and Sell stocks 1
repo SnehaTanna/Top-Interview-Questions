@@ -1,0 +1,33 @@
+Best time to buy and sell stockes 1 - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-interview-150
+
+Solution: 
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        // // Brute Force - TC - O(n*n)
+        // int profit = 0, sell =0, buy = 0;
+        // for(int i=0; i<prices.length; i++){
+        //     int curr_profit = 0;
+        //     buy = prices[i];
+        //     for(int j=i+1; j<prices.length; j++){
+        //         sell = prices[j];
+        //         curr_profit = sell - buy;
+        //         profit = Math.max(curr_profit, profit);
+        //     }
+
+        // }
+        // return profit;
+
+        // Better Approach TC: O(n)
+        int buy = prices[0], profit = 0;
+        for(int i=1; i<prices.length; i++){
+            if(prices[i] < buy){
+                buy = prices[i];
+            }
+            else if(prices[i] - buy > profit){
+                profit = prices[i] - buy;
+            }
+        }
+        return profit;
+    }
+}
